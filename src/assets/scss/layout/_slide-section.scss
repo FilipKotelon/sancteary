@@ -1,0 +1,49 @@
+.slide-section{
+  @include rect(100%, 100vh);
+  padding: 6rem;
+  position: relative;
+
+  &.centered{
+    @include d-flex($dir: column, $center: true);
+    text-align: center;
+  }
+
+  &__bg, &__bg-cover{
+    @include abs(0, 0);
+    @include square(100%);
+  }
+
+  &__bg{
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  &__bg-cover{
+    z-index: 1;
+  }
+
+  &__content{
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.light-orange-bg-cover{
+  background: rgba(163, 77, 41, 0.22);
+}
+
+.light-green-bg-cover{
+  background: rgba(83, 104, 85, 0.22);
+}
+
+.light-blue-bg-cover{
+  background: rgba(105, 130, 150, 0.22);
+}
+
+.medium-orange-bg-cover{
+  background: rgba(163, 77, 41, 0.4);
+}
+
+.black-bg-cover{
+  background: rgba(0, 0, 0, 0.4);
+}

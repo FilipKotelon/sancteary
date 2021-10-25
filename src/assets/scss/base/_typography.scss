@@ -1,0 +1,72 @@
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.8rem;
+  font-family: 'Dancing Script', cursive;
+  color: $white;
+}
+
+a{
+  // cursor: pointer;
+
+  &, &:hover{
+    color: $white;
+  }
+
+  &, &:hover{
+    text-decoration: none;
+  }
+}
+
+::selection{
+  background-color: $main;
+  color: $white;
+}
+
+p, ul, ol {
+  font-size: 1.8rem;
+  line-height: 170%;
+  margin-bottom: 1em;
+
+  @media(max-width: 992px){
+    font-size: 1.6rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+
+.big-title{
+  font-size: 9.6rem;
+  line-height: 11.5rem;
+  margin-bottom: 2.4rem;
+
+  &.underline-text{
+    padding-bottom: 2.4rem;
+  }
+}
+
+.underlined-text{
+  position: relative;
+  padding-bottom: .8rem;
+
+  &::after{
+    content: '';
+    @include abs-center-x;
+    @include rect(100%, 2px);
+    bottom: 0;
+    background-color: currentColor;
+  }
+}
+
+.huge-text{
+  font-size: 36px;
+}
+
+.big-text{
+  font-size: 32px;
+}
