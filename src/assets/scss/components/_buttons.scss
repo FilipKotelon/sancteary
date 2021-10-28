@@ -1,0 +1,20 @@
+@import "utility/variables";
+@import "utility/mixins/mixins-other";
+@import "utility/mixins/mixins-flex";
+
+.shop-button{
+  @include d-flex($center: true);
+  text-align: center;
+  border: $border;
+  font-size: 2.4rem;
+  @include transition;
+  color: $white;
+  height: 5.6rem;
+  padding: 0 3.6rem;
+
+  @media(hover: hover){
+    &:hover{
+      background-color: $main;
+    }
+  }
+}

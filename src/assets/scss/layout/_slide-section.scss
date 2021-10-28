@@ -1,11 +1,21 @@
 .slide-section{
+  @include d-flex($dir: column);
   @include rect(100%, 100vh);
-  padding: 6rem;
+  padding: 5rem 6.4rem;
   position: relative;
 
   &.centered{
-    @include d-flex($dir: column, $center: true);
+    align-items: center;
+    justify-content: center;
     text-align: center;
+
+    & .slide-section{
+      &__content{
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+    }
   }
 
   &__bg, &__bg-cover{
@@ -23,6 +33,7 @@
   }
 
   &__content{
+    @include d-flex($dir: column, $ai: flex-start);
     position: relative;
     z-index: 2;
   }

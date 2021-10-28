@@ -1,0 +1,55 @@
+<form 
+  [formGroup]="contactForm"
+  (ngSubmit)="onSubmit()"
+  class="auth-form labeled-inputs-con"
+>
+
+  <app-labeled-input
+    label="Email"
+    validationMessage="Please provide a valid email."
+    formControlName="email"
+    [control]="contactForm.controls.email"
+  ></app-labeled-input>
+
+  <app-labeled-input
+    label="Password"
+    validationMessage="Your password should be at least 8 characters long."
+    formControlName="password"
+    [control]="contactForm.controls.password"
+    type="password"
+  ></app-labeled-input>
+
+  <button 
+    type="submit"
+    class="shop-button"
+    appHoverEnlargeCursor
+  > 
+    {{ authType === allAuthTypes.LogIn ? 'Log in' : 'Sign up' }}
+  </button>
+
+  <ng-container *ngIf="authType === allAuthTypes.LogIn">
+    <span class="auth-form__alternative">
+      Don’t have an account?
+      <a
+        routerLink="/profile/sign-up"
+        class="underlined-text"
+        appHoverEnlargeCursor
+      >
+        Sign up!
+      </a>
+    </span>
+  </ng-container>
+  <ng-container *ngIf="authType === allAuthTypes.SignUp">
+    <span class="auth-form__alternative">
+      Already have an account?
+      <a
+        routerLink="/profile/log-in"
+        class="underlined-text"
+        appHoverEnlargeCursor
+      >
+        Log in!
+      </a>
+    </span>
+  </ng-container>
+
+</form>

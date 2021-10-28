@@ -1,10 +1,22 @@
+import { AdminGuard } from './auth/guards/admin.guard'
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 
-import { HomeComponent } from "@shop/pages/home/home.component";
-
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent}
+  { 
+    path: '',
+    pathMatch: 'full',
+    loadChildren: () => import("@shop/shop.module").then(m => m.ShopModule) ,
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'admin',
+    canActivate: [AdminGuard],
+    loadChildren: () => import('@admin/admin.module').then(m => m.AdminModule)
+  },
 ]
 
 @NgModule({

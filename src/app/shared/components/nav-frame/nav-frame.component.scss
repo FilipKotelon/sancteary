@@ -1,0 +1,103 @@
+@import "utility/mixins/mixins-other";
+@import "utility/mixins/mixins-flex";
+@import "utility/mixins/mixins-spacing";
+@import "utility/variables";
+
+.nav-frame{
+  @include fix(0, 0);
+  @include square(100%);
+  z-index: 10000;
+  pointer-events: none;
+  padding: 3.5rem;
+  overflow: hidden;
+}
+
+.frame{
+  @include d-flex($ai: flex-start, $jc: flex-end);
+  @include square(100%);
+  position: relative;
+  padding: 3.2rem 4.5rem;
+  z-index: 1;
+  
+  &, &__corner-block{
+    border: $border;
+  }
+
+  &__corner-block{
+    @include abs();
+    @include square(6rem);
+
+    &:nth-child(1){
+      left: -4rem;
+      top: -4rem;
+    }
+
+    &:nth-child(2){
+      right: -4rem;
+      top: -4rem;
+    }
+
+    &:nth-child(3){
+      right: -4rem;
+      bottom: -4rem;
+    }
+
+    &:nth-child(4){
+      left: -4rem;
+      bottom: -4rem;
+    }
+  }
+}
+
+.st-nav{
+  @include d-flex($ai: center);
+  @include m-not-last(2.6rem, r);
+
+  &__opener, &__item{
+    pointer-events: all;
+  }
+
+  //These should be in px to be accurate with the open / close animation
+  &__opener{
+    @include square(60px);
+    @include d-flex($dir: column, $center: true);
+    border: $border;
+    @include m-not-last(.9rem, b);
+
+    & span{
+      @include rect(36px, 2px);
+      background: $white;
+      @include transition;
+      transform-origin: left center;
+    }
+
+    &.open{
+      & span{
+        &:nth-child(1){
+          transform: rotate(45deg) translate(3px, -6px);
+        }
+
+        &:nth-child(2){
+          opacity: 0;
+        }
+
+        &:nth-child(3){
+          transform: rotate(-45deg) translate(3px, 4px);
+        }
+      }
+    }
+  }
+
+  &__item{
+    &__icon{
+      
+    }
+  }
+}
+
+.full-page-nav{
+  @include abs(0, 0);
+  @include square(100%);
+  z-index: 0;
+  pointer-events: all;
+}

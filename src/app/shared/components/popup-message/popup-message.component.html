@@ -1,0 +1,21 @@
+<div class="popup-message" *ngIf="open" [@fadeInOut]>
+  <div 
+    class="popup-message__bg"
+    appHoverEnlargeCursor
+    hoverMessage="Close"
+    (click)="closePopup()"
+  ></div>
+  <div class="popup-message__content">
+    <img 
+      src="assets/img/icons/close-thin.svg"
+      alt="Close"
+      class="popup-message__close"
+      appHoverEnlargeCursor
+      hoverMessage="Close"
+      (click)="closePopup()"
+    >
+    <div class="popup-message__msg">
+      {{ msg }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="admin-wrapper">
+  <app-admin-sidebar></app-admin-sidebar>
+  <app-admin-nav></app-admin-nav>
+  <div class="admin-wrapper__outlet" [@routeAnimations]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+</div>

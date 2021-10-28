@@ -1,0 +1,6 @@
+
+<app-nav-frame></app-nav-frame>
+<app-custom-cursor></app-custom-cursor>
+<div class="auth-wrapper" [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>

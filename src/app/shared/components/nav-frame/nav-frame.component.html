@@ -1,0 +1,42 @@
+<div class="nav-frame">
+  <div class="frame">
+    <div class="frame__corners">
+      <div class="frame__corner-block"></div>
+      <div class="frame__corner-block"></div>
+      <div class="frame__corner-block"></div>
+      <div class="frame__corner-block"></div>
+    </div>
+    <nav class="st-nav">
+      <div class="st-nav__item">
+        <a routerLink="/profile" appHoverEnlargeCursor>
+          <img src="assets/img/icons/shop-account.svg" alt="Account" class="st-nav__item__icon">
+        </a>
+      </div>
+      <div class="st-nav__item">
+        <img src="assets/img/icons/shop-bag.svg" alt="Cart" class="st-nav__item__icon" appHoverEnlargeCursor>
+      </div>
+      <div 
+        class="st-nav__opener"
+        [ngClass]="{
+          'open': fullNavOpen
+        }"
+        (click)="fullNavOpen ? closeFullNav() : openFullNav()"
+        appHoverEnlargeCursor
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </div>
+  <div class="full-page-nav slide-section centered" *ngIf="fullNavOpen" [@fadeInOut]>
+    <img src="assets/img/photos/hq/menu.png" alt="Sancteary Menu Background" class="slide-section__bg">
+    <div class="slide-section__bg-cover black-bg-cover"></div>
+    <div class="slide-section__content">
+      <h1 class="big-title underlined-text">Menu</h1>
+      <div class="full-page-nav__links huge-text">
+        <a routerLinkActive="active" routerLink="/" appHoverEnlargeCursor (click)="closeFullNav()">Home</a>
+      </div>
+    </div>
+  </div>
+</div>

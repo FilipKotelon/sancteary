@@ -1,0 +1,38 @@
+@import "utility/variables";
+@import "utility/mixins/mixins-other";
+@import "utility/mixins/mixins-flex";
+
+.popup-message{
+  @include fix(0, 0);
+  @include square(100%);
+  @include d-flex($center: true);
+  z-index: 20000;
+  pointer-events: all;
+
+  &__bg{
+    @include abs(0, 0);
+    @include square(100%);
+    background: rgba(83, 104, 85, 0.6);
+    z-index: 0;
+  }
+
+  &__content{
+    position: relative;
+    z-index: 1;
+    max-width: 540px;
+    background-color: $green-dark;
+    border: 1px solid $white;
+    padding: 3.6rem 3rem;
+  }
+
+  &__close{
+    @include abs($r: .9rem, $t: .9rem);
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  &__msg{
+    font-size: 2.4rem;
+    text-align: center;
+  }
+}

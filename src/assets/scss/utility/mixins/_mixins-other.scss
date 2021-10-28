@@ -80,7 +80,7 @@
 }
 
 @mixin transition {
-    transition: all .6s;
+    transition: all .6s ease;
 }
 
 @mixin square($l){

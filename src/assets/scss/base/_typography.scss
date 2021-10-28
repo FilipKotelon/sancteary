@@ -4,7 +4,7 @@ html{
 
 body{
   font-size: 1.8rem;
-  font-family: 'Dancing Script', cursive;
+  font-family: $fontMain, cursive;
   color: $white;
 }
 
@@ -50,6 +50,15 @@ h1, h2, h3, h4, h5, h6{
   }
 }
 
+.medium-title{
+  font-size: 6.4rem;
+  line-height: 7.7rem;
+
+  &.underline-text{
+    padding-bottom: 1.2rem;
+  }
+}
+
 .underlined-text{
   position: relative;
   padding-bottom: .8rem;
@@ -64,9 +73,13 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .huge-text{
-  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .big-text{
-  font-size: 32px;
+  font-size: 3.2rem;
+}
+
+.medium-text{
+  font-size: 3.2rem;
 }

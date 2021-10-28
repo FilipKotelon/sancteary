@@ -1,0 +1,12 @@
+<main class="slide-section centered">
+  <img src="assets/img/photos/hq/sign-up.png" alt="Sancteary Sign up" class="slide-section__bg">
+  <div class="slide-section__bg-cover black-bg-cover"></div>
+  <div class="slide-section__content">
+    <h1 class="big-title underlined-text auth-form">Sign up</h1>
+    <app-auth-form
+      (errorOccured)="onError($event)"
+      (submitted)="onSubmit($event)"
+      [authType]="authType"
+    ></app-auth-form>
+  </div>
+</main>
