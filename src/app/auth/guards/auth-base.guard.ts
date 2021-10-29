@@ -81,6 +81,8 @@ export abstract class AuthBaseGuard {
                 })
               )
             }
+          } else {
+            return of(null);
           }
         }
       )

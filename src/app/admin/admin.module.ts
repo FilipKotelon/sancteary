@@ -8,7 +8,9 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { EditComponent } from './pages/products/edit/edit.component';
+import { ProductEditComponent } from './pages/products/product-edit/product-edit.component';
+import { OrderEditComponent } from './pages/orders/order-edit/order-edit.component';
+import { CategoriesEditComponent } from './pages/categories/categories-edit/categories-edit.component';
 
 
 
@@ -21,7 +23,9 @@ import { EditComponent } from './pages/products/edit/edit.component';
     ProductsComponent,
     CategoriesComponent,
     OrdersComponent,
-    EditComponent
+    ProductEditComponent,
+    OrderEditComponent,
+    CategoriesEditComponent,
   ],
   imports: [
     CommonModule,

@@ -75,7 +75,7 @@ export const getLocalStorageUser = (): User => {
     id: string,
     role: UserRole,
     _token: string,
-    _tokenExpirationDate: Date
+    _tokenExpirationDate: string
   } = JSON.parse(savedUser);
 
   const user = new User(
@@ -83,7 +83,7 @@ export const getLocalStorageUser = (): User => {
     userData.id,
     userData.role,
     userData._token,
-    userData._tokenExpirationDate
+    new Date(userData._tokenExpirationDate)
   )
 
   //Token will return null if the token expired

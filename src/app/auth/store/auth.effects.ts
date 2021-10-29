@@ -1,3 +1,4 @@
+import { AuthService } from '@core/services/auth.service'
 import { User } from './../models/user.model'
 import { handleAuthSuccess, handleError, getLocalStorageUser } from './auth.helpers'
 import { DbUser } from './../models/db-user.model'
@@ -16,7 +17,7 @@ import { UserRole } from '../models/user.model'
 export class AuthEffects {
   usersCollection: AngularFirestoreCollection;
 
-  constructor(private actions$: Actions, private fireAuth: AngularFireAuth, private fireStore: AngularFirestore, private router: Router){
+  constructor(private actions$: Actions, private fireAuth: AngularFireAuth, private fireStore: AngularFirestore, private router: Router, private authService: AuthService){
     this.usersCollection = this.fireStore.collection<DbUser>('users');
   }
 
@@ -130,6 +131,9 @@ export class AuthEffects {
     () => this.actions$.pipe(
       ofType(AuthActions.AUTH_SUCCESS),
       tap((authSuccessAction: AuthActions.AuthSuccess) => {
+        const expiresIn = authSuccessAction.payload.user.expirationDate.getTime() - new Date().getTime();
+        this.authService.setLogOutTimer(expiresIn);
+
         if(authSuccessAction.payload.redirectTo){
           this.router.navigate([authSuccessAction.payload.redirectTo])
         }
@@ -205,11 +209,11 @@ export class AuthEffects {
   authLogOut = createEffect(
     () => this.actions$.pipe(
       ofType(AuthActions.LOGOUT),
-      tap(
-        () => {
-          localStorage.removeItem('loggedInUser');
-        }
-      )
+      tap(() => {
+        this.authService.clearLogOutTimer();
+        localStorage.removeItem('loggedInUser');
+        this.router.navigate(['/']);
+      })
     ),
     { dispatch: false }
   )
