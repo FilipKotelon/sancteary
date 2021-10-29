@@ -1,0 +1,26 @@
+@import "utility/variables";
+@import "utility/mixins/mixins-flex";
+@import "utility/mixins/mixins-other";
+@import "utility/mixins/mixins-spacing";
+
+.admin-sidebar{
+  @include square(100%);
+  background: $grey-300;
+  padding: 2.3rem 2rem;
+
+  &__item-group{
+    @include d-flex($dir: column);
+    @include m-not-last(1.3rem, b);
+    margin-bottom: 5rem;
+  }
+
+  &__item{
+    @include d-flex($ai: center);
+    cursor: pointer;
+
+    &__icon{
+      width: 2.4rem;
+      margin-right: 1.4rem;
+    }
+  }
+}

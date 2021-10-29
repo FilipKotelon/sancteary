@@ -1,0 +1,47 @@
+@import "utility/variables";
+@import "utility/mixins/mixins-flex";
+@import "utility/mixins/mixins-other";
+
+.admin-wrapper{
+  @include d-flex($wrap: wrap);
+  @include rect(100vw, 100vh);
+  position: relative;
+  font-family: $fontSecondary;
+  z-index: 20000;
+
+  & app-admin-nav{
+    @include rect(100%, 6rem);
+  }
+
+  & app-admin-sidebar{
+    @include rect(28rem, calc(100vh - 6rem));
+  }
+
+  &__outlet{
+    @include rect(calc(100% - 28rem), calc(100vh - 6rem));
+    position: relative;
+    padding: 2.3rem 3.2rem;
+    background: $white;
+
+    & > *{
+      width: calc(100% - 6.4rem);
+    }
+  }
+}
+
+::ng-deep{
+  .admin-wrapper{
+    //when somebody jumps from admin to home and back again, the styles hiding the cursor from custom cursor are still applied, so gotta reset them
+    cursor: default;
+
+    &, & a{
+      color: $black;
+    }
+
+    &__outlet{  
+      & > *{
+        width: calc(100% - 6.4rem);
+      }
+    }
+  }
+}

@@ -2,19 +2,54 @@
 @import "utility/mixins/mixins-other";
 @import "utility/mixins/mixins-flex";
 
-.shop-button{
+.shop-button, .admin-button{
   @include d-flex($center: true);
   text-align: center;
+  color: $white;
+}
+
+.shop-button{
   border: $border;
   font-size: 2.4rem;
   @include transition;
-  color: $white;
   height: 5.6rem;
   padding: 0 3.6rem;
 
   @media(hover: hover){
     &:hover{
       background-color: $main;
+    }
+  }
+}
+
+.admin-button{
+  height: 4.2rem;
+  padding: 0 2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: $white !important;
+  @include transition;
+
+  &.smaller{
+    font-size: 1.4rem;
+    height: 3.4rem;
+  }
+
+  &.green{
+    background-color: $main;
+  }
+
+  &.black{
+    background-color: $black;
+  }
+
+  &.brown{
+    background-color: $brown;
+  }
+
+  @media(hover: hover){
+    &:hover{
+      opacity: .8;
     }
   }
 }

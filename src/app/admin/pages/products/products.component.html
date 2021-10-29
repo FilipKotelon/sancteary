@@ -1,0 +1,52 @@
+<div class="admin-table-con">
+  <div class="admin-table-title">
+    <h1 class="huge-text">Products</h1>
+    <a routerLink="/admin/products/new" class="admin-button green">
+      Add new
+    </a>
+  </div>
+  <div class="admin-table-filters">
+
+  </div>
+  <div class="admin-table">
+    <div class="admin-table__row header-row">
+      <div class="admin-table__cell">
+        ID
+      </div>
+      <div class="admin-table__cell">
+        NAME
+      </div>
+      <div class="admin-table__cell">
+        PRICE
+      </div>
+      <div class="admin-table__cell">
+        STOCK
+      </div>
+      <div class="admin-table__cell">
+        
+      </div>
+    </div>
+    <div class="admin-table__row" *ngFor="let i of [1, 2, 3, 4, 5, 6]">
+      <div class="admin-table__cell">
+        1
+      </div>
+      <div class="admin-table__cell">
+        Teanacolada primiera
+      </div>
+      <div class="admin-table__cell">
+        $10.00
+      </div>
+      <div class="admin-table__cell">
+        4
+      </div>
+      <div class="admin-table__cell button-cell">
+        <a routerLink="/admin/products/edit/1" class="admin-button black">
+          Edit
+        </a>
+        <div class="admin-button brown">
+          Delete
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs'
 import { map, take } from 'rxjs/operators'
-import { fader } from '@app/shared/animations/route-animations'
+import { fader } from '@shared/animations/route-animations'
 import { Component, OnInit, OnDestroy } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { Store } from '@ngrx/store'

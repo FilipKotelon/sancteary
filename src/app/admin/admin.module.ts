@@ -5,6 +5,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavComponent } from './components/nav/nav.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { EditComponent } from './pages/products/edit/edit.component';
 
 
 
@@ -13,7 +17,11 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     AdminComponent,
     SidebarComponent,
     NavComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ProductsComponent,
+    CategoriesComponent,
+    OrdersComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

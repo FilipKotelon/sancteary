@@ -6,16 +6,25 @@ const routes: Routes = [
   { 
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import("@shop/shop.module").then(m => m.ShopModule) ,
+    loadChildren: () => import("@shop/shop.module").then(m => m.ShopModule),
+    data: {
+      anmimation: '1'
+    }
   },
   {
     path: 'profile',
-    loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('@auth/auth.module').then(m => m.AuthModule),
+    data: {
+      anmimation: '2'
+    }
   },
   {
     path: 'admin',
     canActivate: [AdminGuard],
-    loadChildren: () => import('@admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('@admin/admin.module').then(m => m.AdminModule),
+    data: {
+      anmimation: '3'
+    }
   },
 ]
 
