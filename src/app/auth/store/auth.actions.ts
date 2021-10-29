@@ -1,4 +1,4 @@
-import { UserRole } from './../models/user.model'
+import { User, UserRole } from './../models/user.model'
 import { Action } from '@ngrx/store';
 
 export const LOGIN_START = '[Auth] Login Start';
@@ -46,7 +46,7 @@ export class AuthSuccess implements Action {
 export class AutoLogin implements Action {
   readonly type = AUTO_LOGIN;
 
-  constructor(public payload?: string) {}
+  constructor(public payload?: User) {}
 }
 
 export class Logout implements Action {

@@ -62,3 +62,36 @@ export const handleAuthSuccess = (data: AuthSuccessData) => {
     redirectTo: data.redirectTo
   })
 }
+
+export const getLocalStorageUser = (): User => {
+  const savedUser = localStorage.getItem('loggedInUser');
+
+  if(!savedUser){
+    return null;
+  }
+
+  const userData : {
+    email: string,
+    id: string,
+    role: UserRole,
+    _token: string,
+    _tokenExpirationDate: Date
+  } = JSON.parse(savedUser);
+
+  const user = new User(
+    userData.email,
+    userData.id,
+    userData.role,
+    userData._token,
+    userData._tokenExpirationDate
+  )
+
+  //Token will return null if the token expired
+  if(!user.token){
+    localStorage.removeItem('loggedInUser');
+
+    return null;
+  }
+
+  return user;
+}

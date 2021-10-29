@@ -1,5 +1,5 @@
 import { User } from './../models/user.model'
-import { handleAuthSuccess, handleError } from './auth.helpers'
+import { handleAuthSuccess, handleError, getLocalStorageUser } from './auth.helpers'
 import { DbUser } from './../models/db-user.model'
 import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore'
 import { Router } from '@angular/router'
 import { tap, map, catchError, switchMap } from 'rxjs/operators'
-import { from, of } from 'rxjs'
+import { from, Observable, of } from 'rxjs'
 
 import * as AuthActions from '@auth/store/auth.actions'
 import { UserRole } from '../models/user.model'
@@ -143,35 +143,35 @@ export class AuthEffects {
   authAutoLogin = createEffect(
     () => this.actions$.pipe(
       ofType(AuthActions.AUTO_LOGIN),
-      switchMap(() => {
-        const savedUser = localStorage.getItem('loggedInUser');
+      switchMap((autoLoginAction: AuthActions.AutoLogin) => {
+        //If the action got a verified user in the payload, don't run the verification twice
+        if(autoLoginAction.payload){
+          const user = autoLoginAction.payload;
+
+          return of(
+            handleAuthSuccess({
+              user: {
+                email: user.email,
+                userId: user.id,
+                token: user.token,
+                role: user.role,
+                expirationDate: user.tokenExpirationDate
+              },
+              redirectTo: null
+            })
+          )
+        }
+
+        const user = getLocalStorageUser();
 
         //Don't log in if no user
-        if(!savedUser){
-          return of(
-            { type: 'DUMMY' }
-          ).pipe(
+        if(!user){
+          return new Observable().pipe(
             map(action => {
               return {type: 'DUMMY'}
             })
           )
         }
-
-        const userData : {
-          email: string,
-          id: string,
-          role: UserRole,
-          _token: string,
-          _tokenExpirationDate: Date
-        } = JSON.parse(savedUser);
-
-        const user = new User(
-          userData.email,
-          userData.id,
-          userData.role,
-          userData._token,
-          userData._tokenExpirationDate
-        )
 
         return this.usersCollection.get()
           .pipe(
@@ -191,7 +191,7 @@ export class AuthEffects {
                     userId: user.id,
                     token: user.token,
                     role: dbUserRole,
-                    expirationDate: userData._tokenExpirationDate
+                    expirationDate: user.tokenExpirationDate
                   },
                   redirectTo: null
                 })
@@ -200,5 +200,17 @@ export class AuthEffects {
           )
       })
     )
+  )
+
+  authLogOut = createEffect(
+    () => this.actions$.pipe(
+      ofType(AuthActions.LOGOUT),
+      tap(
+        () => {
+          localStorage.removeItem('loggedInUser');
+        }
+      )
+    ),
+    { dispatch: false }
   )
 }

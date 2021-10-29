@@ -16,6 +16,7 @@ export function authReducer ( state = initState, action: AuthActions.AuthActions
 
     case AuthActions.LOGIN_START :
     case AuthActions.SIGNUP_START :
+    case AuthActions.AUTO_LOGIN :
       return {
         ...state,
         loading: true
