@@ -1,3 +1,4 @@
+
 import { Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
 import { Component, OnInit, OnDestroy } from '@angular/core'
@@ -8,12 +9,12 @@ import * as AppMsgSelectors from '@app/store/app-msg.selectors'
 import { PopupController } from '../utility/popup-controller.class'
 
 @Component({
-  selector: 'app-error-message',
-  templateUrl: './error-message.component.html',
-  styleUrls: ['./error-message.component.scss']
+  selector: 'app-info-message',
+  templateUrl: './info-message.component.html',
+  styleUrls: ['./info-message.component.scss']
 })
-export class ErrorMessageComponent extends PopupController {
+export class InfoMessageComponent extends PopupController {
   constructor(protected store: Store<fromApp.AppState>) {
-    super(store, AppMsgSelectors.selectError, AppMsgActions.AppErrorClear);
+    super(store, AppMsgSelectors.selectInfo, AppMsgActions.AppInfoClear);
   }
 }

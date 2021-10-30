@@ -1,3 +1,4 @@
+import { Store } from '@ngrx/store'
 import { AuthService } from '@core/services/auth.service'
 import { User } from './../models/user.model'
 import { handleAuthSuccess, handleError, getLocalStorageUser } from './auth.helpers'
@@ -11,13 +12,20 @@ import { tap, map, catchError, switchMap } from 'rxjs/operators'
 import { from, Observable, of } from 'rxjs'
 
 import * as AuthActions from '@auth/store/auth.actions'
+import * as AppMsgActions from '@app/store/app-msg.actions'
 import { UserRole } from '../models/user.model'
 
 @Injectable()
 export class AuthEffects {
   usersCollection: AngularFirestoreCollection;
 
-  constructor(private actions$: Actions, private fireAuth: AngularFireAuth, private fireStore: AngularFirestore, private router: Router, private authService: AuthService){
+  constructor(
+    private actions$: Actions, 
+    private fireAuth: AngularFireAuth, 
+    private fireStore: AngularFirestore,
+    private router: Router,
+    private authService: AuthService
+  ){
     this.usersCollection = this.fireStore.collection<DbUser>('users');
   }
 
@@ -148,6 +156,7 @@ export class AuthEffects {
     () => this.actions$.pipe(
       ofType(AuthActions.AUTO_LOGIN),
       switchMap((autoLoginAction: AuthActions.AutoLogin) => {
+        //TODO: eventually refresh token
         //If the action got a verified user in the payload, don't run the verification twice
         if(autoLoginAction.payload){
           const user = autoLoginAction.payload;
@@ -209,12 +218,13 @@ export class AuthEffects {
   authLogOut = createEffect(
     () => this.actions$.pipe(
       ofType(AuthActions.LOGOUT),
-      tap(() => {
+      map(() => {
         this.authService.clearLogOutTimer();
         localStorage.removeItem('loggedInUser');
         this.router.navigate(['/']);
+        //TODO: show message that user has been logged out
+        return new AppMsgActions.AppInfo('You\'ve been logged out.');
       })
-    ),
-    { dispatch: false }
+    )
   )
 }

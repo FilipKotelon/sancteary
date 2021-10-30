@@ -7,14 +7,27 @@
       <div class="frame__corner-block"></div>
     </div>
     <nav class="st-nav">
+
       <div class="st-nav__item">
-        <a routerLink="/profile" appHoverEnlargeCursor>
+        <a routerLink="/" appHoverEnlargeCursor title="Home">
+          <img src="assets/img/icons/home.svg" alt="Home" class="st-nav__item__icon">
+        </a>
+      </div>
+
+      <div class="st-nav__item">
+        <a routerLink="/profile" appHoverEnlargeCursor title="Profile">
           <img src="assets/img/icons/shop-account.svg" alt="Account" class="st-nav__item__icon">
         </a>
       </div>
+
       <div class="st-nav__item">
-        <img src="assets/img/icons/shop-bag.svg" alt="Cart" class="st-nav__item__icon" appHoverEnlargeCursor>
+        <img src="assets/img/icons/shop-bag.svg" alt="Cart" class="st-nav__item__icon" appHoverEnlargeCursor title="Cart">
       </div>
+
+      <div class="st-nav__item" *ngIf="userLoggedIn">
+        <img src="assets/img/icons/log-out-white.svg" alt="Log out" class="st-nav__item__icon" appHoverEnlargeCursor title="Log out" (click)="logOut()">
+      </div>
+
       <div 
         class="st-nav__opener"
         [ngClass]="{

@@ -5,7 +5,7 @@ import { AuthType } from '@auth/components/auth-form/auth-form.component'
 import { Store } from '@ngrx/store'
 
 import * as AuthActions from '@auth/store/auth.actions'
-import * as AppErrorActions from '@app/store/app-error.actions'
+import * as AppMsgActions from '@app/store/app-msg.actions'
 import * as fromApp from '@app/store/app.reducer'
 
 @Component({
@@ -24,11 +24,11 @@ export class LogInComponent implements AuthFormHandler {
 
     if(!email && !password){
       this.store.dispatch(
-        new AppErrorActions.AppError('Please provide your email and password.')
+        new AppMsgActions.AppError('Please provide your email and password.')
       )
     } else {
       this.store.dispatch(
-        new AppErrorActions.AppError('Please check if you provided the correct email and password.')
+        new AppMsgActions.AppError('Please check if you provided the correct email and password.')
       )
     }
   }
@@ -43,7 +43,7 @@ export class LogInComponent implements AuthFormHandler {
       )
     } else {
       this.store.dispatch(
-        new AppErrorActions.AppError('Email and password were not provided.')
+        new AppMsgActions.AppError('Email and password were not provided.')
       )
     }
   }

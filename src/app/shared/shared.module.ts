@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { LabeledInputComponent } from './components/labeled-input/labeled-input.component';
 import { PopupMessageComponent } from './components/popup-message/popup-message.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { InfoMessageComponent } from './components/info-message/info-message.component';
 
 
 
@@ -18,7 +19,8 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     LabeledInputComponent,
     NavFrameComponent,
     PopupMessageComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    InfoMessageComponent
   ],
   imports: [
     RouterModule,
@@ -33,7 +35,8 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     LabeledInputComponent,
     NavFrameComponent,
     PopupMessageComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    InfoMessageComponent
   ]
 })
 export class SharedModule { }

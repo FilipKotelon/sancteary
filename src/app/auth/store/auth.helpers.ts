@@ -4,14 +4,14 @@ import { of } from "rxjs";
 
 import { UserRole } from '../models/user.model';
 import * as AuthActions from '@auth/store/auth.actions'
-import * as AppErrorActions from '@app/store/app-error.actions'
+import * as AppMsgActions from '@app/store/app-msg.actions'
 
 export const handleError = (error) => {
   let msg = 'An error occurred. Try again later.';
   console.log(error);
 
   if(!error.code){
-    return of(new AppErrorActions.AppError(msg))
+    return of(new AppMsgActions.AppError(msg))
   }
 
   switch(error.code){
@@ -37,7 +37,7 @@ export const handleError = (error) => {
 
   console.log(msg);
 
-  return of(new AppErrorActions.AppError(msg))
+  return of(new AppMsgActions.AppError(msg))
 }
 
 export const handleAuthSuccess = (data: AuthSuccessData) => {
