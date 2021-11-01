@@ -28,7 +28,7 @@ export const handleError = (error) => {
       msg = 'The password must contain at least 6 characters.';
       break;
     case 'auth/wrong-password':
-      msg = 'The password for this email is not correct.';
+      msg = 'The password for this account is not correct.';
       break;
     case 'auth/user-not-found':
       msg = 'No user found for this email.';

@@ -1,0 +1,44 @@
+<div class="admin-field">
+  <div class="admin-field__label">
+    {{ label }}:
+  </div>
+  <div class="admin-field__control-con">
+
+    <ng-container *ngIf="isLarge">
+      <textarea
+        class="admin-field__control"
+
+        #input
+        (input)="onChange($event, input.value)"
+        [value]="value"
+
+        appHoverEnlargeCursor
+        hoverMessage="Fill"
+      ></textarea>
+    </ng-container>
+    
+    <ng-container *ngIf="!isLarge">
+      <input
+        class="admin-field__control"
+        type="text"
+
+        #input
+        (input)="onChange($event, input.value)"
+        [value]="value"
+
+        appHoverEnlargeCursor
+        hoverMessage="Fill"
+      >
+    </ng-container>
+
+    <div
+      class="admin-field__validation"
+      [ngClass]="{
+        'open': !control.valid && control.dirty
+      }"
+    >
+      {{ validationMessage }}
+    </div>
+
+  </div>
+</div>

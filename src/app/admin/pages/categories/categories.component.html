@@ -1,1 +1,52 @@
-<p>categories works!</p>
+<div class="admin-table-con">
+  <div class="admin-table-title">
+    <h1 class="huge-text">Categories</h1>
+    <a routerLink="/admin/categories/new" class="admin-button green">
+      Add new
+    </a>
+  </div>
+  <div class="admin-table-filters">
+
+  </div>
+  <div class="admin-table">
+    <div class="admin-table__row header-row">
+      <div class="admin-table__cell">
+        ID
+      </div>
+      <div class="admin-table__cell">
+        NAME
+      </div>
+      <div class="admin-table__cell">
+        
+      </div>
+      <div class="admin-table__cell">
+        
+      </div>
+      <div class="admin-table__cell">
+        
+      </div>
+    </div>
+    <div class="admin-table__row" *ngFor="let i of [1, 2]">
+      <div class="admin-table__cell">
+        1
+      </div>
+      <div class="admin-table__cell">
+        Teas
+      </div>
+      <div class="admin-table__cell">
+        
+      </div>
+      <div class="admin-table__cell">
+        
+      </div>
+      <div class="admin-table__cell button-cell">
+        <a routerLink="/admin/categories/edit/1" class="admin-button black">
+          Edit
+        </a>
+        <div class="admin-button brown">
+          Delete
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

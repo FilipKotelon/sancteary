@@ -34,6 +34,10 @@
     //when somebody jumps from admin to home and back again, the styles hiding the cursor from custom cursor are still applied, so gotta reset them
     cursor: default;
 
+    & input, textarea{
+      cursor: text;
+    }
+
     &, & a{
       color: $black;
     }

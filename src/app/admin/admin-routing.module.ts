@@ -26,6 +26,9 @@ const routes: Routes = [
         path: 'categories',
         pathMatch: 'full',
         component: CategoriesComponent,
+        data: {
+          animation: '2'
+        },
       },
       {
         path: 'categories',
@@ -67,6 +70,9 @@ const routes: Routes = [
         path: 'products',
         pathMatch: 'full',
         component: ProductsComponent,
+        data: {
+          animation: '4'
+        },
       },
       {
         path: 'products',

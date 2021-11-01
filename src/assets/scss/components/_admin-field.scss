@@ -1,0 +1,59 @@
+@import "utility/variables";
+@import "utility/mixins/mixins-flex";
+@import "utility/mixins/mixins-other";
+@import "utility/mixins/mixins-spacing";
+
+.admin-field{
+  @include d-flex($ai: flex-start);
+  width: 100%;
+  margin-bottom: 2.4rem;
+
+  &__label{
+    width: 14rem;
+    margin-right: 1.6rem;
+  }
+
+  &__control-con{
+    position: relative;
+    width: calc(100% - 15.6rem);
+  }
+
+  &__control, &__select{
+    height: 3.4rem;
+  }
+
+  &__control{
+    width: 100%;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $black;
+  }
+
+  & textarea{
+    height: 6.8rem;
+    resize: none;
+  }
+
+  &__select{
+    position: relative;
+    border-bottom: 1px solid $black;
+
+    &__toggler{
+      @include abs-center-y;
+      right: 0;
+    }
+  }
+
+  &__validation{
+    @include abs(0, calc(100% + 4px));
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+    opacity: 0;
+    visibility: hidden;
+    @include transition;
+
+    &.open{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

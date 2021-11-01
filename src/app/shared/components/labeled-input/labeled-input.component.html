@@ -6,12 +6,15 @@
 >
   <div class="labeled-input__placeholder">{{ label }}</div>
   <input 
-    #input
     class="labeled-input__field"
+    
     appHoverEnlargeCursor
     hoverMessage="Fill"
+  
+    #input
     [value]="value"
     [type]="type"
+
     (focus)="onFocus()"
     (focusout)="onFocusOut()"
     (input)="onChange($event, input.value)"

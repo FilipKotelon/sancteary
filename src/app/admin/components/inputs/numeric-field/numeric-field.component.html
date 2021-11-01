@@ -1,0 +1,29 @@
+<div class="admin-field">
+  <div class="admin-field__label">
+    {{ label }}:
+  </div>
+  <div class="admin-field__control-con">
+
+    <input
+      class="admin-field__control"
+      type="number"
+
+      #input
+      (change)="onChange($event, input.value)"
+      [value]="value"
+
+      appHoverEnlargeCursor
+      hoverMessage="Fill"
+    >
+
+    <div
+      class="admin-field__validation"
+      [ngClass]="{
+        'open': !control.valid && control.dirty
+      }"
+    >
+      {{ validationMessage }}
+    </div>
+
+  </div>
+</div>

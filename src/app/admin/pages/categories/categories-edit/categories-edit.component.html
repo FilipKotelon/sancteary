@@ -1,1 +1,27 @@
-<p>categories-edit works!</p>
+<form class="admin-form" [formGroup]="form">
+  <div class="admin-form__main">
+
+    <app-text-field
+      label="Category name"
+      validationMessage="Please provide the category name."
+      formControlName="name"
+      [control]="form.controls.name"
+    ></app-text-field>
+    
+  </div>
+  <div class="admin-form__image-con">
+    
+  </div>
+
+  <div class="admin-form__actions">
+    <button type="submit" class="admin-button green">
+      Save
+    </button>
+    <div class="admin-button brown">
+      Delete
+    </div>
+    <a href="/admin/products" class="admin-button black">
+      Cancel
+    </a>
+  </div>
+</form>

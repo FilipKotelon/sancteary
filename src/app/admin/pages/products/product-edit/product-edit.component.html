@@ -1,1 +1,62 @@
-<p>product-edit works!</p>
+<form class="admin-form" [formGroup]="form">
+  <div class="admin-form__main">
+
+    <app-text-field
+      label="Product name"
+      validationMessage="Please provide a product name."
+      formControlName="name"
+      [control]="form.controls.name"
+    ></app-text-field>
+
+    <app-select-field
+      label="Category"
+      validationMessage="Please provide the product category."
+      formControlName="category"
+      [control]="form.controls.category"
+    ></app-select-field>
+
+    <app-numeric-field
+      label="Product price"
+      validationMessage="Please provide the price."
+      formControlName="price"
+      [control]="form.controls.price"
+      [withDecimals]="true"
+    ></app-numeric-field>
+
+    <app-numeric-field
+      label="Stock"
+      validationMessage="Please provide the stock amount."
+      formControlName="stock"
+      [control]="form.controls.stock"
+    ></app-numeric-field>
+
+    <app-text-field
+      label="Specifics"
+      formControlName="specifics"
+      [control]="form.controls.specifics"
+    ></app-text-field>
+
+    <app-text-field
+      label="Description"
+      formControlName="desc"
+      [control]="form.controls.desc"
+      [isLarge]="true"
+    ></app-text-field>
+
+  </div>
+  <div class="admin-form__image-con">
+    
+  </div>
+
+  <div class="admin-form__actions">
+    <button type="submit" class="admin-button green">
+      Save
+    </button>
+    <div class="admin-button brown">
+      Delete
+    </div>
+    <a href="/admin/products" class="admin-button black">
+      Cancel
+    </a>
+  </div>
+</form>

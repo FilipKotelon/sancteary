@@ -1,6 +1,7 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EditableOrNew } from '@app/admin/utility/editable.class';
+import { EditableOrNew } from '@app/admin/utility/editable-or-new.class';
 
 @Component({
   selector: 'app-categories-edit',
@@ -8,12 +9,23 @@ import { EditableOrNew } from '@app/admin/utility/editable.class';
   styleUrls: ['./categories-edit.component.scss']
 })
 export class CategoriesEditComponent extends EditableOrNew {
+  form: FormGroup;
 
   constructor(protected route: ActivatedRoute) {
     super(route);
   }
 
   initForm = () => {
-    console.log(this.editMode);
+    let name = '',
+      imgUrl = '';
+
+    if(this.id){
+
+    }
+
+    this.form = new FormGroup({
+      name: new FormControl(name, [Validators.required]),
+      imgUrl: new FormControl(imgUrl, [Validators.required])
+    })
   }
 }
