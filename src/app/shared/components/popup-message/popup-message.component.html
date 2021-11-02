@@ -1,4 +1,12 @@
-<div class="popup-message" *ngIf="open" [@fadeInOut]>
+<div 
+  *ngIf="open"
+  [@fadeInOut]
+  class="popup-message" 
+  [ngClass]="{
+    'in-admin': inAdmin,
+    'error': error
+  }"
+>
   <div 
     class="popup-message__bg"
     appHoverEnlargeCursor

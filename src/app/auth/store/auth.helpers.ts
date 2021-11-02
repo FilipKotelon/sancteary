@@ -35,8 +35,6 @@ export const handleError = (error) => {
       break;
   }
 
-  console.log(msg);
-
   return of(new AppMsgActions.AppError(msg))
 }
 

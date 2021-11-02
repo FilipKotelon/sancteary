@@ -20,6 +20,27 @@
       background-color: $main;
     }
   }
+
+  &.green{
+    background-color: $main;
+
+    @media(hover: hover){
+      &:hover{
+        opacity: .8;
+      }
+    }
+  }
+
+  &.brown{
+    background-color: $brown;
+
+    @media(hover: hover){
+      &:hover{
+        background-color: $brown;
+        opacity: .8;
+      }
+    }
+  }
 }
 
 .admin-button{

@@ -4,7 +4,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 @Directive()
 export abstract class EditableOrNew implements OnInit {
   protected id: string = null;
-  protected editMode = false;
+  editMode = false;
 
   constructor(protected route: ActivatedRoute) {}
 
@@ -17,4 +17,6 @@ export abstract class EditableOrNew implements OnInit {
   }
 
   protected abstract initForm()
+
+  abstract onSubmit()
 }

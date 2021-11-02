@@ -1,0 +1,36 @@
+@import "utility/variables";
+@import "utility/mixins/mixins-flex";
+@import "utility/mixins/mixins-other";
+@import "utility/mixins/mixins-spacing";
+
+.file-upload{
+  @include square(100%);
+  @include d-flex($center: true);
+  position: relative;
+
+  & input{
+    display: none;
+  }
+
+  &__img{
+    @include abs(0, 0);
+    @include img-contain;
+    z-index: 0;
+  }
+
+  &__button{
+    position: relative;
+    z-index: 1;
+  }
+
+  &__progress{
+    @include abs($l: 0, $b: 0);
+    @include rect(100%, .6rem);
+
+    &__bar{
+      @include transition;
+      @include rect(0%, 100%);
+      background: $main;
+    }
+  }
+}

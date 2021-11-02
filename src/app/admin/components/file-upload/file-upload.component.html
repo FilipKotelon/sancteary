@@ -1,0 +1,23 @@
+<div class="file-upload">
+  <input 
+    #input
+    id="file-upload-input"
+    type="file"
+    (change)="uploadImg($event)"
+  >
+  <img
+    *ngIf="imgUrl"
+    [src]="imgUrl"
+    [@fadeInOut]
+    class="file-upload__img"
+  >
+  <label for="file-upload-input" class="file-upload__button admin-button black">
+    Upload image
+  </label>
+  <div 
+    *ngIf="uploading"
+    [@fadeInOut]
+    class="file-upload__progress" >
+    <div class="file-upload__progress__bar" [style]="'width: '+ uploadPercentage +'%;'"></div>
+  </div>
+</div>

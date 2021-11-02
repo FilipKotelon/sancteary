@@ -15,6 +15,7 @@ import { CategoriesEditComponent } from './pages/categories/categories-edit/cate
 import { TextFieldComponent } from './components/inputs/text-field/text-field.component';
 import { NumericFieldComponent } from './components/inputs/numeric-field/numeric-field.component';
 import { SelectFieldComponent } from './components/inputs/select-field/select-field.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 
@@ -32,7 +33,8 @@ import { SelectFieldComponent } from './components/inputs/select-field/select-fi
     CategoriesEditComponent,
     TextFieldComponent,
     NumericFieldComponent,
-    SelectFieldComponent
+    SelectFieldComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,

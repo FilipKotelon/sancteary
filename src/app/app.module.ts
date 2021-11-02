@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage'
 
 import { environment } from '../environments/environment'
 
@@ -30,6 +31,7 @@ import { AuthEffects } from '@auth/store/auth.effects'
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     ShopModule,
     AuthModule,

@@ -46,8 +46,8 @@
 }
 
 @media(hover: hover){
-  ::ng-deep body{
-    &, & a{
+  ::ng-deep app-custom-cursor ~ *{
+    &, & a, & [apphoverenlargecursor]{
       cursor: none;
     }
   }

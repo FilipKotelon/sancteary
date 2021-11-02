@@ -26,12 +26,12 @@
         
       </div>
     </div>
-    <div class="admin-table__row" *ngFor="let i of [1, 2]">
+    <div class="admin-table__row" *ngFor="let cat of categories">
       <div class="admin-table__cell">
-        1
+        {{ cat.id }}
       </div>
       <div class="admin-table__cell">
-        Teas
+        {{ cat.name }}
       </div>
       <div class="admin-table__cell">
         
@@ -40,13 +40,24 @@
         
       </div>
       <div class="admin-table__cell button-cell">
-        <a routerLink="/admin/categories/edit/1" class="admin-button black">
+        <a routerLink="/admin/categories/edit/{{ cat.id }}" class="admin-button black">
           Edit
         </a>
-        <div class="admin-button brown">
+        <div class="admin-button brown" (click)="onOpenAccept(cat.id)">
           Delete
         </div>
       </div>
     </div>
+    <div class="admin-table__row" *ngIf="!categories.length">
+      <div class="admin-table__cell">No categories added yet!</div>
+    </div>
   </div>
 </div>
+
+<app-accept-popup
+  msg="Do you want to delete this category?"
+  acceptMsg="Yes"
+  [open]="acceptPopupOpen"
+  (accepted)="onDelete()"
+  (declined)="onCloseAccept()"
+></app-accept-popup>

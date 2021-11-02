@@ -9,6 +9,7 @@ import { LabeledInputComponent } from './components/labeled-input/labeled-input.
 import { PopupMessageComponent } from './components/popup-message/popup-message.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
+import { AcceptPopupComponent } from './components/accept-popup/accept-popup.component';
 
 
 
@@ -20,7 +21,8 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     NavFrameComponent,
     PopupMessageComponent,
     ErrorMessageComponent,
-    InfoMessageComponent
+    InfoMessageComponent,
+    AcceptPopupComponent
   ],
   imports: [
     RouterModule,
@@ -36,7 +38,8 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     NavFrameComponent,
     PopupMessageComponent,
     ErrorMessageComponent,
-    InfoMessageComponent
+    InfoMessageComponent,
+    AcceptPopupComponent
   ]
 })
 export class SharedModule { }
