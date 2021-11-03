@@ -26,6 +26,11 @@
     width: 100%;
     padding-bottom: 1rem;
     border-bottom: 1px solid $black;
+
+    &.shorter{
+      width: 20rem;
+      max-width: 100%;
+    }
   }
 
   & textarea{
@@ -34,12 +39,61 @@
   }
 
   &__select{
+    width: 60rem;
+    max-width: 100%;
     position: relative;
     border-bottom: 1px solid $black;
+    cursor: pointer;
+    overflow: hidden;
+
+    &.open{
+      overflow: initial;
+
+      & .admin-field__select{
+        &__toggler{
+          transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        &__options{
+          border-color: $black;
+          height: auto;
+          max-height: 34rem;
+          overflow: auto;
+        }
+
+        &__option{
+          padding: .2rem .4rem;
+        }
+      }
+    }
 
     &__toggler{
       @include abs-center-y;
+      @include transition;
       right: 0;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    &__options{
+      @include abs(0, 0);
+      @include rect(100%, 3.4rem);
+      @include d-flex($dir: column);
+      @include transition;
+      background-color: $white;
+      z-index: 10;
+      border: 1px solid transparent;
+      @include scrollbar($color: $black, $bg: $white, $w: .6rem, $rounded: false);
+    }
+
+    &__option{
+      @include rect(100%, 3.4rem);
+      min-height: 3.4rem;
+      @include transition;
+
+      &.selected{
+        order: -1;
+      }
     }
   }
 

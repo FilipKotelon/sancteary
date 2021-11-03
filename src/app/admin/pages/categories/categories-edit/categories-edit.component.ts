@@ -43,30 +43,33 @@ export class CategoriesEditComponent extends EditableOrNew {
     })
 
     if(this.id){
-      this.categoriesCollection.doc(this.id).get().pipe(
-        take(1)
-      ).subscribe(category => {
-        const categoryData = <ProductCategory>category.data();
+      this.categoriesCollection
+        .doc(this.id)
+        .get()
+        .pipe(
+          take(1)
+        ).subscribe(category => {
+          const categoryData = <ProductCategory>category.data();
 
-        if(categoryData){
-          this.form = new FormGroup({
-            name: new FormControl(categoryData.name, [Validators.required]),
-            imgUrl: new FormControl(categoryData.imgUrl, [Validators.required])
-          })
-        } else {
-          this.store.dispatch(
-            new AppMsgActions.AppError(`Category with id "${this.id}" was not found.`)
-          )
+          if(categoryData){
+            this.form = new FormGroup({
+              name: new FormControl(categoryData.name, [Validators.required]),
+              imgUrl: new FormControl(categoryData.imgUrl, [Validators.required])
+            })
+          } else {
+            this.store.dispatch(
+              new AppMsgActions.AppError(`Category with id "${this.id}" was not found.`)
+            )
 
-          this.router.navigate(['/admin/categories'])
-        }
-      })
+            this.router.navigate(['/admin/categories'])
+          }
+        })
     }
   }
 
   onSubmit = () => {
-    const name = this.form.get('name').value;
-    const imgUrl = this.form.get('imgUrl').value;
+    const name = this.form.get('name').value,
+      imgUrl = this.form.get('imgUrl').value;
 
     if(!name || !imgUrl){
       this.store.dispatch(

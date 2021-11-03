@@ -4,13 +4,21 @@
   </div>
   <div class="admin-field__control-con">
     
-    <div class="admin-field__select">
+    <div 
+      class="admin-field__select"
+      [ngClass]="{
+        'open': isOpen
+      }"
+    >
       <div class="admin-field__select__options">
 
         <div 
           *ngFor="let option of options | keyvalue"
           class="admin-field__select__option"
-          (click)="selectValue(option.key)"
+          (click)="!isOpen ? openSelect() : selectValue($event, option.key)"
+          [ngClass]="{
+            'selected': option.key === value
+          }"
         >
           {{ option.value }}
         </div>
@@ -18,17 +26,6 @@
       </div>
       <img src="assets/img/icons/arrow-down.svg" alt="Open" class="admin-field__select__toggler">
     </div>
-
-    <input
-      type="hidden"
-
-      #input
-      (input)="onChange($event, input.value)"
-      [value]="value"
-
-      appHoverEnlargeCursor
-      hoverMessage="Fill"
-    >
 
     <div
       class="admin-field__validation"

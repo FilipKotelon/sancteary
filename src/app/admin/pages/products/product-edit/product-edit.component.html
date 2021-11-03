@@ -1,4 +1,8 @@
-<form class="admin-form" [formGroup]="form">
+<form 
+  class="admin-form" 
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
   <div class="admin-form__main">
 
     <app-text-field
@@ -11,8 +15,9 @@
     <app-select-field
       label="Category"
       validationMessage="Please provide the product category."
-      formControlName="category"
-      [control]="form.controls.category"
+      formControlName="categoryId"
+      [control]="form.controls.categoryId"
+      [options]="categoriesOptions"
     ></app-select-field>
 
     <app-numeric-field
@@ -38,25 +43,39 @@
 
     <app-text-field
       label="Description"
-      formControlName="desc"
-      [control]="form.controls.desc"
+      formControlName="description"
+      [control]="form.controls.description"
       [isLarge]="true"
     ></app-text-field>
 
   </div>
   <div class="admin-form__image-con">
-    
+    <app-file-upload
+      path="images/products"
+      formControlName="imgUrl"
+      [control]="form.controls.imgUrl"
+      [imgUrl]="form.controls.imgUrl.value"
+    ></app-file-upload>
   </div>
 
   <div class="admin-form__actions">
     <button type="submit" class="admin-button green">
       Save
     </button>
-    <div class="admin-button brown">
+    <div class="admin-button brown" *ngIf="editMode" (click)="onOpenAccept()">
       Delete
     </div>
-    <a routerLink="/admin/products" class="admin-button black">
+    <a routerLink="/admin/categories" class="admin-button black">
       Cancel
     </a>
   </div>
 </form>
+
+<app-accept-popup
+  *ngIf="editMode"
+  msg="Do you want to delete this product?"
+  acceptMsg="Yes"
+  [open]="acceptPopupOpen"
+  (accepted)="onDelete()"
+  (declined)="onCloseAccept()"
+></app-accept-popup>

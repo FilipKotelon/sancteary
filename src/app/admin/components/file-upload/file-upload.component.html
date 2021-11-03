@@ -4,6 +4,7 @@
     id="file-upload-input"
     type="file"
     (change)="uploadImg($event)"
+    accept="image/png, image/jpeg"
   >
   <img
     *ngIf="imgUrl"

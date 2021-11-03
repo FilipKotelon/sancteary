@@ -1,3 +1,4 @@
+import { DataDeleteService } from './../../services/data-delete.service'
 import { Store } from '@ngrx/store'
 import { of } from 'rxjs'
 import { NG_VALUE_ACCESSOR } from '@angular/forms'
@@ -36,7 +37,11 @@ export class FileUploadComponent extends InputComponent implements OnDestroy {
   uploadPercentageSub: Subscription;
   uploadSub: Subscription;
 
-  constructor(private fireStorage: AngularFireStorage, private store: Store<fromApp.AppState>) {
+  constructor(
+    private fireStorage: AngularFireStorage,
+    private store: Store<fromApp.AppState>,
+    private deleteSvc: DataDeleteService
+  ) {
     super();
   }
 
@@ -49,6 +54,8 @@ export class FileUploadComponent extends InputComponent implements OnDestroy {
     if(!imgFile){
       return;
     }
+  
+    const imgToDelete = this.imgUrl;
 
     this.uploading = true;
 
@@ -66,6 +73,11 @@ export class FileUploadComponent extends InputComponent implements OnDestroy {
           this.imgUrl = url;
           this.onChange(e, url);
           this.uploading = false;
+
+          //After successful upload, delete the previous image
+          if(imgToDelete){
+            this.deleteSvc.deleteImage(imgToDelete);
+          }
         })
       }),
       catchError(error => {
@@ -88,8 +100,10 @@ export class FileUploadComponent extends InputComponent implements OnDestroy {
   }
 
   getImgFileName = (filePath: string) => {
-    return filePath.split(/(\\|\/)/g).pop();
+    return this.getRandomFileId() + '_' + filePath.split(/(\\|\/)/g).pop();
   }
+
+  getRandomFileId = () => Math.random().toString(36).substr(2, 9);
 
   ngOnDestroy() {
     this.clearSubs();

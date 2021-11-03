@@ -32,8 +32,6 @@ export function authReducer ( state = initState, action: AuthActions.AuthActions
         userData.expirationDate
       );
 
-      console.log(user);
-
       return {
         ...state,
         user,
