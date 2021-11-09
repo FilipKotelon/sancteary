@@ -5,7 +5,7 @@ import { Directive, HostListener, Input } from '@angular/core'
   selector: '[appHoverEnlargeCursor]'
 })
 export class HoverEnlargeCursorDirective{
-  @Input() hoverMessage!: string;
+  @Input() hoverMessage: string;
   constructor(private cursorSvc: CursorService){}
 
   @HostListener('mouseenter') mouseenter(e: Event){

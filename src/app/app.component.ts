@@ -36,7 +36,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.storeSub.unsubscribe();
+    if(this.storeSub){
+      this.storeSub.unsubscribe();
+    }
   }
 
   prepareRoute(outlet: RouterOutlet){

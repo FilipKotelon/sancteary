@@ -6,10 +6,10 @@ import * as fromAppMsg from './app-msg.reducer'
 
 export interface AppState {
   auth: fromAuth.State,
-  error: fromAppMsg.State
+  msg: fromAppMsg.State
 }
 
 export const appReducer: ActionReducerMap<AppState> = {
   auth: fromAuth.authReducer,
-  error: fromAppMsg.appMsgReducer
+  msg: fromAppMsg.appMsgReducer
 }

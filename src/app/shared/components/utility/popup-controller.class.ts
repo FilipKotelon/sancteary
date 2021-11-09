@@ -1,13 +1,13 @@
 import { Subscription } from 'rxjs'
 import { Store } from '@ngrx/store'
-import { Directive, OnInit } from '@angular/core'
+import { Directive, OnInit, OnDestroy } from '@angular/core'
 
 import * as fromApp from '@app/store/app.reducer'
 import * as fromAppMsgSelectors from '@app/store/app-msg.selectors'
 import * as AppMsgActions from '@app/store/app-msg.actions'
 
 @Directive()
-export abstract class PopupController implements OnInit {
+export abstract class PopupController implements OnInit, OnDestroy {
   private storeSub: Subscription;
   msg = '';
   isOpen = false;
@@ -27,7 +27,9 @@ export abstract class PopupController implements OnInit {
   }
 
   ngOnDestroy() {
-    this.storeSub.unsubscribe();
+    if(this.storeSub){
+      this.storeSub.unsubscribe();
+    }
   }
 
   closePopup = () => {

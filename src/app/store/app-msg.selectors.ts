@@ -4,7 +4,7 @@ import * as fromAppMsg from './app-msg.reducer'
 
 export type SelectorType = typeof selectError;
 
-export const selectMsg = (state: fromApp.AppState) => state.error;
+export const selectMsg = (state: fromApp.AppState) => state.msg;
 
 export const selectError = createSelector(
   selectMsg,

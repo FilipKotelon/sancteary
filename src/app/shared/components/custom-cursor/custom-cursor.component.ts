@@ -8,11 +8,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./custom-cursor.component.scss'],
 })
 export class CustomCursorComponent implements OnInit, OnDestroy {
-  @ViewChild('customCursor', {static: true}) cursorEl!: ElementRef;
-  msg!: string;
-  isLarge!: boolean;
-  cursorSizeSubscription!: Subscription;
-  cursorMsgSubscription!: Subscription;
+  @ViewChild('customCursor', {static: true}) cursorEl: ElementRef;
+  msg: string;
+  isLarge: boolean;
+  cursorSizeSubscription: Subscription;
+  cursorMsgSubscription: Subscription;
 
   constructor(private renderer: Renderer2, private cursorSvc: CursorService) { }
 
